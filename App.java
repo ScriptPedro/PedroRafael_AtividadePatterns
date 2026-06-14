@@ -1,21 +1,18 @@
-public static void main(String[] args) {
-        Computador basicao = new ComputadorBuilder()
-                .comProcessador("Intel Core i5")
-                .comRam("8GB")
-                .comArmazenamento("256GB SSD")
-                .build();
+public class App {
+    public static void main(String[] args) {
+        WeatherStation station = new WeatherStation();
 
-        Computador gamer = new ComputadorBuilder()
-                .comProcessador("Intel Core i9")
-                .comRam("32GB")
-                .comArmazenamento("1TB SSD")
-                .comPlacaDeVideo("NVIDIA RTX 4070")
-                .build();
+        ConsoleDisplay display = new ConsoleDisplay();
+        FanController fan = new FanController();
 
-        System.out.println("=== Computador Básico ===");
-        System.out.println(basicao);
+        station.subscribe(display);
+        station.subscribe(fan);
 
-        System.out.println("\n=== Computador Gamer ===");
-        System.out.println(gamer);
+        station.setTemperature(26);
+        station.setTemperature(30);
+
+        station.unsubscribe(display);
+
+        station.setTemperature(27);
     }
-
+}
